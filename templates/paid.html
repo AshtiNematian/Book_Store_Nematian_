@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5 class="text-center" style="margin-top:50px">اطلاعات ارسال</h5>
+<form class="account-form p-2 rounded col-lg-2 mx-auto " action="" method="post">
+    {% csrf_token %}
+{{ form.as_p }}
+<button class="btn btn-success ml-2" type="submit">ثبت</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock title %}
+{% block content %}
+    <div class="col-6 text-end"><button type="button" class="btn btn-success btn-sm">
+        <a href="{% url 'account:category_new' %}">
+            افزودن دسته بندی جدید
+        </a>
+    </button>
+    </div>
+
+        <div class="col-6 text-end"><button type="button" class="btn btn-success btn-sm">
+        <a href="{% url 'account:book_new' %}">
+            افزودن کتاب جدید
+        </a>
+    </button>
+    </div>
+
+
+    {% for category in  categories.category_list%}
+        <div class="card" style="margin: 30px; padding: 20px;border-radius: 10px" >
+        <div class="card-header">
+        <span class="font-weight-bold">
+            <a href="{{ category.get_absolute_url }}">{{ category|title}}</a></span>
+            </div>
+        </div>
+    <br />
+    {% endfor %}
+{% endblock content %}
