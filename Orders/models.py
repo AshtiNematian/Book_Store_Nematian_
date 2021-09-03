@@ -20,9 +20,6 @@ class Order(models.Model):
     class Meta:
         verbose_name = "سفارش   "
         verbose_name_plural = "سفارش ها"
-
-
-    class Meta:
         ordering = ('-created',)
 
     def __str__(self):

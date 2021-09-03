@@ -58,14 +58,12 @@ class Book(models.Model):
     class Meta:
         verbose_name = "کتاب  "
         verbose_name_plural = "کتاب ها"
+        ordering = ('-created',)
 
     def get_image(self):
         if self.image:
             return 'http://127.0.0.1:8000' + self.image.url
         return ''
-
-    class Meta:
-        ordering = ('-created',)
 
     def get_absolute_url(self):
         return reverse('store:product_detail', args=[self.slug])
