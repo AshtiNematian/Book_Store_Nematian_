@@ -4,6 +4,7 @@ from User.models import Address
 from Basket.models import Basket, basket
 from Orders.models import Order, ItemOrder
 from Orders.forms import OrderForm
+from django.contrib import messages
 
 
 def user_orders(request):
@@ -31,6 +32,7 @@ def order_view(request):
             ItemOrder.objects.create(user=user, order=order, product=item['product'], quantity=item['qty'])
 
         order.save()
+        messages.success(request, 'سفارش شما با موفقیت ثبت شد')
     order = Order.objects.all()
     context = {'order': order, 'form': form}
     return render(request, 'paid.html', context)

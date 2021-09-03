@@ -10,6 +10,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'adminlte_full',
     'adminlte3',
     'adminlte3_theme',
     'django.contrib.admin',
@@ -23,8 +25,7 @@ INSTALLED_APPS = [
     'User',
     'Orders',
     'Coupon',
-    'pytest'
-]
+    'pytest',]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -34,6 +35,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -51,6 +53,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'Product.views.categories',
                 'Basket.models.basket',
+                'adminlte_full.context_processors.adminlte',
             ],
         },
     },
@@ -93,8 +96,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, "static")
- ]
+    os.path.join(BASE_DIR, "static")
+]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -109,3 +112,4 @@ LOGIN_URL = '/account/login/'
 
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

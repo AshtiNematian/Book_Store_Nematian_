@@ -16,6 +16,7 @@
         border-color: #1497ff;
         box-shadow: none;
     }
+
 </style>
 
 
@@ -32,7 +33,7 @@
                                 <h3 class="mb-4">ورود به حساب کاربری</h3>
 
                                 {% if form.errors %}
-                                <div class="alert alert-primary" role="alert">
+                                <div class="alert alert-danger" role="alert">
                                     خطا:نام کاربری یا رمز ورود اشتباه است!
                                 </div>
                                 {% endif %}
@@ -44,17 +45,17 @@
                                 {{ form.password}}
                                 <div class="d-grid gap-2">
                                     <input type="hidden" name="next" value="{{ next }}">
-                                    <button class="btn btn-primary py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">ورود به حساب کاربری
+                                    <button class="btn btn-success py-2 mb-4 mt-5 fw-bold" type="submit" value="Log-in">ورود به حساب کاربری
                                     </button>
                                 </div>
                                 <p class="text-center pb-3">
-                                    <a href="{% url "account:register" %}">
+                                    <a class="btn btn-success py-2 mb-4 mt-5 fw-bold" style="text-decoration:none;color:white" href="{% url "account:register" %}">
                                     ساخت حساب کاربری
                                     </a>
                                 </p>
                             </form>
                             <p class="small text-center pt-4">
-                                 <a href="{% url "account:pwdreset" %}">
+                                 <a style="text-decoration:none" href="{% url "account:pwdreset" %}">
 
                                 فراموش کردن رمز عبور
                                 </a>
