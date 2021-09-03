@@ -94,10 +94,6 @@ class UserEditForm(forms.ModelForm):
         label='username', min_length=4, max_length=50, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'نام کاربری', 'id': 'form-username'}))
 
-    password = forms.CharField(
-        label='password', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'رمز عبور', 'id': 'form-username'}))
-
     class Meta:
         model = UserBase
         fields = ('email', 'user_name', 'password')

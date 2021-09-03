@@ -18,7 +18,21 @@
                     <div class="col border-bottom">
                         <div class="row p-3">
                             <div class="col-6">قیمت محصول</div>
+                                {% if product.dis%}
+                            <div class="col-6 text-end"><span class="h6 ">تومان {{ product.price }}</span></div>
+                            <br>
+                            <div class="col-6 text-end"><span class="h6 ">با احتساب تخفیف {{ product.price_after_dis }}</span></div>
+                            {%elif product.discount_percent%}
+                            <div class="col-6 text-end"><span class="h6 ">تومان {{ product.price }}</span></div>
+
+                            <div class="col-6 text-end"><span class="h6 ">با احتساب تخفیف {{ product.percent_discount }}</span></div>
+                            {%else %}
                             <div class="col-6 text-end"><span class="h6 ">تومان{{ product.price }}</span></div>
+                            {%endif%}
+
+
+
+
                         </div>
                     </div>
                     <div class="col">

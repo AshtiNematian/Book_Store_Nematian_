@@ -10,6 +10,10 @@ class Categories(models.Model):
     def get_absolute_url(self):
         return reverse('store:category_list', args=[self.slug])
 
+    class Meta:
+        verbose_name = "دسته بندی  "
+        verbose_name_plural = "دسته بندی ها"
+
     def __str__(self):
         return self.title
 
@@ -17,6 +21,10 @@ class Categories(models.Model):
 class Author(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
     slug = models.SlugField(unique=True, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "نویسنده  "
+        verbose_name_plural = "نویسندگان"
 
     def __str__(self):
         return self.name
@@ -47,13 +55,14 @@ class Book(models.Model):
     objects = models.Manager()
     products = ProductManager()
 
+    class Meta:
+        verbose_name = "کتاب  "
+        verbose_name_plural = "کتاب ها"
+
     def get_image(self):
         if self.image:
             return 'http://127.0.0.1:8000' + self.image.url
         return ''
-
-    def disc(self):
-        self.price - self.dis
 
     class Meta:
         ordering = ('-created',)
@@ -76,7 +85,7 @@ class Book(models.Model):
             discount = 0
         return self.price - self.price * discount / 100
 
-    def remove_items_from_inventory(self, count=1, save=True):
+    def remove_items_from_inventory(self, count=None, save=True):
         self.inventory -= count
         if save == True:
             self.save()

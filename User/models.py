@@ -1,4 +1,3 @@
-import datetime
 import uuid
 
 from django.shortcuts import render
@@ -44,6 +43,13 @@ class CustomAccountManager(BaseUserManager):
         return user
 
 
+'''
+
+Its for creating users if is_staff=True user be staff otherwise is customer
+
+'''
+
+
 class UserBase(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150)
@@ -59,8 +65,8 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['user_name']
 
     class Meta:
-        verbose_name = "Accounts"
-        verbose_name_plural = "Accounts"
+        verbose_name = "کاربر"
+        verbose_name_plural = "کاربران"
 
     def email_user(self, subject, message):
         send_mail(
@@ -88,7 +94,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
 
 class Address(models.Model):
     """
-    Address
+    Address of customers
     """
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -104,8 +110,8 @@ class Address(models.Model):
     default = models.BooleanField(_("Default"), default=False)
 
     class Meta:
-        verbose_name = "Address"
-        verbose_name_plural = "Addresses"
+        verbose_name = "آدرس "
+        verbose_name_plural = "آدرس ها"
 
     def __str__(self):
         return f'{self.address_line}-{self.postcode}-{self.town_city}'

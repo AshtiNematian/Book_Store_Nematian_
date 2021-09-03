@@ -1,10 +1,7 @@
 from decimal import Decimal
-
 from django.conf import settings
-from django.core.validators import MinValueValidator, MaxValueValidator
-
+from Coupon.models import Coupon
 from Product.models import Book
-from django.db import models
 
 
 class Basket(object):
@@ -81,8 +78,6 @@ class Basket(object):
             return (self.coupon.discount / Decimal('100')) * self.get_total_price()
         return Decimal('0')
 
-
-
     def delete(self, product):
         """
         Delete item from session data
@@ -95,7 +90,9 @@ class Basket(object):
             self.save()
 
     def clear(self):
-        # Remove basket from session
+        """
+        Remove basket from session
+        """
         del self.session[settings.BASKET_SESSION_ID]
         self.save()
 
@@ -105,5 +102,3 @@ class Basket(object):
 
 def basket(request):
     return {'basket': Basket(request)}
-
-

@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.utils import timezone
 from django.views.decorators.http import require_POST
 
